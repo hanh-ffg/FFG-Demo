@@ -10,6 +10,10 @@ $(document).ready(function() {
 			$('.remove-file:not(:first)').show();
 
 		});
+		
+		$(document).on ('click', 'a.remove-file', function(){
+			$(this).closest('.extraFile').remove();
+		});
 	})
 
 	function GetHtml() {
