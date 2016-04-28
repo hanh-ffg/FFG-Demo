@@ -268,7 +268,7 @@
 					<div class ="alert alert-danger fade in" id="wrongCode" style="display:none">
 						<strong>The verification code you entered was incorrect.</strong>
 					</div>
-						
+					<!--	
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-8">
 							Enter Code<span id="txtCaptchaDiv" style="background-color:#A51D22;color:#FFF;padding:5px"></span>
@@ -276,16 +276,80 @@
 							<input type="text" name="txtInput" id="txtInput" size="15"/>
 						</div>
 					</div>
+					-->
+					
+					<div class="g-recaptcha col-sm-offset-2 col-sm-10" data-sitekey="6LfXEBsTAAAAACiNW6pZJvietS24FmNJ7p6puDx1"></div>
+					
 
 					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-8">
-							<button type="submit" class="btn btn-default" id="btnUpload">Upload</button>
+						<div>
+							<br>
+							<center><button type="button" class="btn btn-warning btn-sm" onClick="checkform()" id="btnUpload">Upload</button></center>
 						</div>
 					</div>
 				</form>
 				
+				
+				
+				<div id="confirmModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+    				<!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h2 class="modal-title"><center>Document(s) uploaded successfully</center></h2>
+				      </div>
+				      <div class="modal-body">
+				        <p><center>Thank you for submitting the following application(s) on <em id="date"></em> at <em id="time"></em></center></p>
+				        <br>
+				        <ul id="docList" style="list-style-type:circle"></ul><br>
+				        <p><center>We will be in touch with you shortly. If you have additional questions, you can reach us at 216.458.4663 or info@nhscleveland.org from 8:30 am to 5:00 pm during the week.</center></p>
+				      </div>
+				      <div class="modal-footer">
+				        <center><button type="button" class="btn btn-warning btn-lg"  data-dismiss="modal" onClick="submitForm()">OK</button></center>
+				      </div>
+				    </div>
+
+				  </div>
+				</div>
+				
 				<script type="text/javascript">
-				function checkform(theform){
+				function checkform(){
+				var currentdate=new Date();
+				var month = new Array();
+				month[0] = "January";
+				month[1] = "February";
+				month[2] = "March";
+				month[3] = "April";
+				month[4] = "May";
+				month[5] = "June";
+				month[6] = "July";
+				month[7] = "August";
+				month[8] = "September";
+				month[9] = "October";
+				month[10] = "November";
+				month[11] = "December";
+				var hours=currentdate.getHours()%12;
+				if(hours==0)
+				{
+					hours=12;
+				}
+				var ampm="AM";
+				if(currentdate.getHours()<24&&currentdate.getHours()>=12)
+				{
+					ampm="PM";
+				}
+				var minutes="";
+				if(currentdate.getMinutes()<10)
+				{
+					minutes="0"+currentdate.getMinutes();
+				}
+				else{
+					minutes=currentdate.getMinutes();
+				}
+				document.getElementById("date").innerHTML=month[currentdate.getMonth()]+" "+currentdate.getDate()+", "+currentdate.getFullYear();
+				document.getElementById("time").innerHTML=hours+":"+minutes+" "+ampm;
 				var valid=0;
 				if(document.getElementById("txtFname").value=="")
 				{
@@ -311,7 +375,7 @@
 				else{
 					document.getElementById("missingAddress").style.display="none";
 				}
-				if(document.getElementById("txtPhone").value!=""||document.getElementById("txtEmail").value!="")
+				if(document.getElementById("txtPhone").value!="")
 				{
 					document.getElementById("missingContact").style.display="none";
 				}
@@ -322,39 +386,21 @@
 				
 				if(valid==0)
 				{
-					var why=0;
-					if(theform.txtInput.value==""){
-						why=1;
-					}
-					if(theform.txtInput.value!=""){
-						if(ValidCaptcha(theform.txtInput.value)==false){
-							why=2;
-						}
-					}
-					if(why!=0)
-					{
-						if(why==1&&valid==0)
-						{
-							document.getElementById("emptyCode").style.display="block";
-							document.getElementById("wrongCode").style.display="none";
-						}
-						if(why==2&&valid==0)
-						{
-							document.getElementById("emptyCode").style.display="none";
-							document.getElementById("wrongCode").style.display="block";
-						}
-						return false;
-					}
-					else{
-						document.getElementById("emptyCode").style.display="none";
-						document.getElementById("wrongCode").style.display="none";
-					}
+					//document.getElementById("confirmModal").modal="show";
+					//document.getElementById("form").submit();
+					$('#confirmModal').modal('show');
+					//setTimeout("submitForm()", 10000);
 				}
 				else{
 					return false;
 				}
 				}
 				
+				function submitForm(){
+					document.getElementById("form").submit();
+				}
+				
+				/*
 				var a=Math.ceil(Math.random()*9)+'';
 				var b=Math.ceil(Math.random()*9)+'';
 				var c=Math.ceil(Math.random()*9)+'';
@@ -374,6 +420,7 @@
 				return false;
 				}
 				}
+				*/
 				
 				function removeSpaces(string){
 				return string.split(' ').join('');
