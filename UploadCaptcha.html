@@ -20,6 +20,7 @@
 <script src="js/bootstrap.js"></script>
 
 <script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript" src="js/upload-submit.js"></script>
 
 </head>
 
@@ -38,41 +39,35 @@
 		</div>
 		<div class="collapse container" id="downloadCollapse">
 			<div class="row">
-				<div class="col-sm-4">
-					<h3>Category1</h3>
-					<h5>
-						<a href="Form1.txt" download="Form1">Form 1</a>
-					</h5>
-					<h5>
-						<a href="#">Form 2</a>
-					</h5>
-					<h5>
-						<a href="#">Form 3</a>
-					</h5>
-				</div>
-				<div class="col-sm-4">
-					<h3>Category2</h3>
-					<h5>
-						<a href="#">Form 1</a>
-					</h5>
-					<h5>
-						<a href="#">Form 2</a>
-					</h5>
-					<h5>
-						<a href="#">Form 3</a>
-					</h5>
-				</div>
-				<div class="col-sm-4">
-					<h3>Category3</h3>
+				<div class="col-sm-3">
+					<h3>Financial Capability Program</h3>
 
 					<h5>
-						<a href="#">Form 1</a>
+						<a href="forms/Financial Capabilities Intake 2016.pdf" download download>Financial Capabilities Intake</a>
+					</h5>
+				</div>
+
+				<div class="col-sm-3">
+					<h3>Foreclosure Prevention & Mediation Program</h3>
+
+					<h5>
+						<a href="forms/NHSGC Homeownership Preservation Intake Form 2016-MASTER.pdf" download> Homeownership Preservation Intake</a>
+					</h5>
+				</div>
+
+				<div class="col-sm-3">
+					<h3>Homebuyer Education</h3>
+					<h5>
+						<a href="forms/New Homebuyer Intake Form 2016.pdf" download>New Homebuyer Intake Form</a>
+					</h5>
+				</div>
+				<div class="col-sm-3">
+					<h3>Home Repair Loans/Rehab Lending Program</h3>
+					<h5>
+						<a href="forms/NHSGC Home Repair Loan Program App.pdf" download download="Form1">Home Repair Loan Program Application</a>
 					</h5>
 					<h5>
-						<a href="#">Form 2</a>
-					</h5>
-					<h5>
-						<a href="#">Form 3</a>
+						<a href="forms/NHS ACH Authorization Form 10_24_2014.pdf" download>NHS ACH Authorization</a>
 					</h5>
 				</div>
 			</div>
@@ -82,7 +77,8 @@
 	<div class="container">
 		<div class="row pad-top-5">
 			<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-				<form class="form-horizontal" METHOD="POST" onsubmit="return checkform(this);">
+				<form id="form" class="form-horizontal" METHOD="POST"
+					onsubmit="return checkform(this);">
 					<fieldset>
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -97,7 +93,8 @@
 											placeholder="First Name">
 									</div>
 								</div>
-								<div class ="alert alert-danger fade in" id="missingFnm" style="display:none">
+								<div class="alert alert-danger fade in" id="missingFnm"
+									style="display: none">
 									<strong>Please enter your first name</strong>
 								</div>
 
@@ -109,29 +106,33 @@
 											placeholder="Last Name">
 									</div>
 								</div>
-								<div class ="alert alert-danger fade in" id="missingLnm" style="display:none">
+								<div class="alert alert-danger fade in" id="missingLnm"
+									style="display: none">
 									<strong>Please enter your last name</strong>
 								</div>
-								
+
 								<div class="form-group">
-									<label for="txtAddressLine1" class="col-sm-4 control-label"> Address Line 1: </label>
+									<label for="txtAddressLine1" class="col-sm-4 control-label">
+										Address Line 1: </label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control" id="txtAddressLine1"
 											placeholder="Address Line 1">
 									</div>
 								</div>
-								<div class ="alert alert-danger fade in" id="missingAddress" style="display:none">
+								<div class="alert alert-danger fade in" id="missingAddress"
+									style="display: none">
 									<strong>Please enter a valid address</strong>
 								</div>
-						
+
 								<div class="form-group">
-									<label for="txtAddressLine2" class="col-sm-4 control-label"> Address Line 2: </label>
+									<label for="txtAddressLine2" class="col-sm-4 control-label">
+										Address Line 2: </label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control" id="txtAddressLine2"
 											placeholder="Address Line 2">
 									</div>
 								</div>
-						
+
 								<div class="form-group">
 									<label for="txtCity" class="col-sm-4 control-label">
 										City: </label>
@@ -142,15 +143,17 @@
 								</div>
 
 								<div class="form-group">
-									<label for="txtState" class="col-sm-4 control-label"> State: </label>
+									<label for="txtState" class="col-sm-4 control-label">
+										State: </label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control" id="txtState"
 											placeholder="State">
 									</div>
 								</div>
-						
+
 								<div class="form-group">
-									<label for="txtPostalCode" class="col-sm-4 control-label"> Postal Code: </label>
+									<label for="txtPostalCode" class="col-sm-4 control-label">
+										Postal Code: </label>
 									<div class="col-sm-8">
 										<input type="number" class="form-control" id="txtPostalCode"
 											placeholder="Postal Code">
@@ -158,25 +161,29 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<legend>Contact Information:</legend>
 							</div>
-							<div class="panel-body">	
+							<div class="panel-body">
 								<div class="form-group">
-									<label for="txtPhone" class="col-sm-4 control-label"> Phone Number: </label>
+									<label for="txtPhone" class="col-sm-4 control-label">
+										Phone Number: </label>
 									<div class="col-sm-8">
 										<input type="tel" class="form-control" id="txtPhone"
 											placeholder="Phone number">
 									</div>
 								</div>
-								<div class ="alert alert-danger fade in" id="missingContact" style="display:none">
-									<strong>Please enter either a phone number or an email address.</strong>
+								<div class="alert alert-danger fade in" id="missingContact"
+									style="display: none">
+									<strong>Please enter either a phone number or an email
+										address.</strong>
 								</div>
-						
+
 								<div class="form-group">
-									<label for="txtEmail" class="col-sm-4 control-label"> Email: </label>
+									<label for="txtEmail" class="col-sm-4 control-label">
+										Email: </label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control" id="txtEmail"
 											placeholder="Email">
@@ -196,8 +203,7 @@
 										<div class=row>
 											<div class="col-sm-11" name="panel-head">File :</div>
 											<div class="col-sm-1">
-												<a href="#" class="remove-file"
-													name="remove-file"> <span
+												<a href="#" class="remove-file" name="remove-file"> <span
 													class="glyphicon glyphicon-minus"></span>
 												</a>
 											</div>
@@ -208,26 +214,26 @@
 											<label for="" class="col-sm-4 control-label"
 												name="lblCategory">Document Category: </label>
 											<div class="col-sm-8">
-												<select class="form-control" name="sCategory">
-													<option>-Select-</option>
-													<option>CityLIFT Program</option>
-													<option>Cuyahoga County Down Payment Assistance
-														Program</option>
-													<option>Financial Capability Program</option>
-													<option>Foreclosure Prevention and Meditation
-														Program</option>
-													<option>Home Buyer Education</option>
-													<option>Home Equity Conversion Mortgage/Reverse
-														Mortgage</option>
-													<option>Home Repair Loans/ Rehab Lending</option>
-													<option>Land Trust Rental</option>
-													<option>Land Trust Properties for Sale</option>
-													<option>Real Estate Development</option>
-													<option>Small Dollar Landing</option>
-													<option>Volunteer Income Tax Assistance (VITA)
-														program</option>
-													<option>Year 16 Home Mortgages</option>
-													<option>Other</option>
+												<select class="form-control" name="sCategory" id="sCategory">
+													<option value="0">-Select-</option>
+													<option value="1">CityLIFT Program</option>
+													<option value="2">Cuyahoga County Down Payment
+														Assistance Program</option>
+													<option value="3">Financial Capability Program</option>
+													<option value="4">Foreclosure Prevention and
+														Meditation Program</option>
+													<option value="5">Home Buyer Education</option>
+													<option value="6">Home Equity Conversion
+														Mortgage/Reverse Mortgage</option>
+													<option value="7">Home Repair Loans/ Rehab Lending</option>
+													<option value="8">Land Trust Rental</option>
+													<option value="9">Land Trust Properties for Sale</option>
+													<option value="10">Real Estate Development</option>
+													<option value="11">Small Dollar Landing</option>
+													<option value="12">Volunteer Income Tax Assistance
+														(VITA) program</option>
+													<option value="13">Year 16 Home Mortgages</option>
+													<option value="14">Other</option>
 												</select>
 											</div>
 										</div>
@@ -260,174 +266,73 @@
 							</a>
 						</div>
 					</div>
-						
-					<div class ="alert alert-danger fade in" id="emptyCode" style="display:none">
+
+					<div class="alert alert-danger fade in" id="emptyCode"
+						style="display: none">
 						<strong>Please enter the verification code.</strong>
 					</div>
-					
-					<div class ="alert alert-danger fade in" id="wrongCode" style="display:none">
+
+					<div class="alert alert-danger fade in" id="wrongCode"
+						style="display: none">
 						<strong>The verification code you entered was incorrect.</strong>
 					</div>
-					<!--	
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-8">
-							Enter Code<span id="txtCaptchaDiv" style="background-color:#A51D22;color:#FFF;padding:5px"></span>
-							<input type="hidden" id="txtCaptcha"/>
-							<input type="text" name="txtInput" id="txtInput" size="15"/>
-						</div>
-					</div>
-					-->
-					
-					<div class="g-recaptcha col-sm-offset-2 col-sm-10" data-sitekey="6LfXEBsTAAAAACiNW6pZJvietS24FmNJ7p6puDx1"></div>
-					
+
+					<div class="g-recaptcha col-sm-offset-2 col-sm-10"
+						data-sitekey="6LfXEBsTAAAAACiNW6pZJvietS24FmNJ7p6puDx1"></div>
+
 
 					<div class="form-group">
-						<div>
-							<br>
-							<center><button type="button" class="btn btn-warning btn-sm" onClick="checkform()" id="btnUpload">Upload</button></center>
+						<div class="text-center">
+							<button type="button" class="btn btn-warning btn-sm"
+								id="btnUpload">Upload</button>
 						</div>
 					</div>
 				</form>
-				
-				
-				
+
 				<div id="confirmModal" class="modal fade" role="dialog">
-				  <div class="modal-dialog">
+					<div class="modal-dialog">
 
-    				<!-- Modal content-->
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h2 class="modal-title"><center>Document(s) uploaded successfully</center></h2>
-				      </div>
-				      <div class="modal-body">
-				        <p><center>Thank you for submitting the following application(s) on <em id="date"></em> at <em id="time"></em></center></p>
-				        <br>
-				        <ul id="docList" style="list-style-type:circle"></ul><br>
-				        <p><center>We will be in touch with you shortly. If you have additional questions, you can reach us at 216.458.4663 or info@nhscleveland.org from 8:30 am to 5:00 pm during the week.</center></p>
-				      </div>
-				      <div class="modal-footer">
-				        <center><button type="button" class="btn btn-warning btn-lg"  data-dismiss="modal" onClick="submitForm()">OK</button></center>
-				      </div>
-				    </div>
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h2 class="modal-title text-center">Document(s) uploaded
+									successfully</h2>
+							</div>
+							<div class="modal-body row">
+								<div class="col-sm-1 col-lg-1"></div>
+								<div class="col-sm-10 col-lg-10">
+									<div>
+										Thank you for submitting the following application(s) on <span
+											class="bold" id="date"></span> at <span class="bold"
+											id="time"></span>
+									</div>
 
-				  </div>
+									<div>
+										<ul id="docList"></ul>
+									</div>
+
+									<div>
+										We will be in touch with you shortly. If you have additional
+										questions, you can reach us at <span class="bold">216.458.4663</span>
+										or <a href="mailto:info@nhscleveland.org" id="mailto">info@nhscleveland.org</a>
+										from 8:30 am to 5:00 pm during the week.
+									</div>
+								</div>
+								<div class="col-sm-1 col-lg-1"></div>
+
+							</div>
+							<div class="modal-footer text-center">
+								<button type="button" class="btn btn-warning btn-lg"
+									data-dismiss="modal" id="btnSubmit">OK</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				
+
 				<script type="text/javascript">
-				function checkform(){
-				var currentdate=new Date();
-				var month = new Array();
-				month[0] = "January";
-				month[1] = "February";
-				month[2] = "March";
-				month[3] = "April";
-				month[4] = "May";
-				month[5] = "June";
-				month[6] = "July";
-				month[7] = "August";
-				month[8] = "September";
-				month[9] = "October";
-				month[10] = "November";
-				month[11] = "December";
-				var hours=currentdate.getHours()%12;
-				if(hours==0)
-				{
-					hours=12;
-				}
-				var ampm="AM";
-				if(currentdate.getHours()<24&&currentdate.getHours()>=12)
-				{
-					ampm="PM";
-				}
-				var minutes="";
-				if(currentdate.getMinutes()<10)
-				{
-					minutes="0"+currentdate.getMinutes();
-				}
-				else{
-					minutes=currentdate.getMinutes();
-				}
-				document.getElementById("date").innerHTML=month[currentdate.getMonth()]+" "+currentdate.getDate()+", "+currentdate.getFullYear();
-				document.getElementById("time").innerHTML=hours+":"+minutes+" "+ampm;
-				var valid=0;
-				if(document.getElementById("txtFname").value=="")
-				{
-					document.getElementById("missingFnm").style.display="block";
-					valid=1;
-				}
-				else{
-					document.getElementById("missingFnm").style.display="none";
-				}
-				if(document.getElementById("txtLname").value=="")
-				{
-					document.getElementById("missingLnm").style.display="block";
-					valid=1;
-				}
-				else{
-					document.getElementById("missingLnm").style.display="none";
-				}
-				if(document.getElementById("txtAddressLine1").value==""||document.getElementById("txtState").value==""||document.getElementById("txtPostalCode").value=="")
-				{
-					document.getElementById("missingAddress").style.display="block";
-					valid=1;
-				}
-				else{
-					document.getElementById("missingAddress").style.display="none";
-				}
-				if(document.getElementById("txtPhone").value!="")
-				{
-					document.getElementById("missingContact").style.display="none";
-				}
-				else{
-					document.getElementById("missingContact").style.display="block";
-					valid=1;
-				}
-				
-				if(valid==0)
-				{
-					//document.getElementById("confirmModal").modal="show";
-					//document.getElementById("form").submit();
-					$('#confirmModal').modal('show');
-					//setTimeout("submitForm()", 10000);
-				}
-				else{
-					return false;
-				}
-				}
-				
-				function submitForm(){
-					document.getElementById("form").submit();
-				}
-				
-				/*
-				var a=Math.ceil(Math.random()*9)+'';
-				var b=Math.ceil(Math.random()*9)+'';
-				var c=Math.ceil(Math.random()*9)+'';
-				var d=Math.ceil(Math.random()*9)+'';
-				var e=Math.ceil(Math.random()*9)+'';
-				
-				var code=a+b+c+d+e;
-				document.getElementById("txtCaptcha").value=code;
-				document.getElementById("txtCaptchaDiv").innerHTML=code;
-				
-				function ValidCaptcha(){
-				var str1=removeSpaces(document.getElementById('txtCaptcha').value);
-				var str2=removeSpaces(document.getElementById('txtInput').value);
-				if(str1==str2){
-				return true;
-				}else{
-				return false;
-				}
-				}
-				*/
-				
-				function removeSpaces(string){
-				return string.split(' ').join('');
-				}
+					
 				</script>
-				
-				
 			</div>
 		</div>
 	</div>
