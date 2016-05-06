@@ -1,8 +1,19 @@
 
-.extraFileTemplate {
-	display: none;
+.list {
+	display: table; /* Allow the centering to work */
+	margin: 0 auto;
 }
 
-.pad-top-5 {
-	padding-top: 5%;
+ul#docList {
+	list-style: circle;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+a#mailto{
+	color: blue;
+}
+
+.bold{
+	font-weight: bold;
 }
