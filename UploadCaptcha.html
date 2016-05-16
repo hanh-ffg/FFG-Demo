@@ -22,10 +22,11 @@
 <script type="text/javascript" src="js/upload.js"></script>
 <script type="text/javascript" src="js/download.js"></script>
 <script type="text/javascript" src="js/upload-submit.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
 </head>
 
-<body>
+<body style="padding-top:65px">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -37,6 +38,7 @@
 				</a></li>
 				<li><a>Upload </a></li>
 			</ul>
+			<br>
 		</div>
 		<div class="collapse container" id="downloadCollapse">
 			<div class="row">
@@ -295,6 +297,11 @@
 								id="btnUpload">Upload</button>
 						</div>
 					</div>
+					
+						<div class="text-center">
+							<button type="button" class="btn btn-warning btn-sm" onClick="validate2()" id="testButton"
+								>Test</button>
+						</div>
 				</form>
 
 				<div id="confirmModal" class="modal fade" role="dialog">
@@ -331,16 +338,45 @@
 
 							</div>
 							<div class="modal-footer text-center">
-								<button type="button" class="btn btn-warning btn-lg"
-									data-dismiss="modal" id="btnSubmit">OK</button>
+								<center><button type="button" class="btn btn-warning btn-lg"
+									data-dismiss="modal" id="btnSubmit">OK</button></center>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<script type="text/javascript">
-					
+				function validate2()
+				{
+				
+
+    					var xhr = new XMLHttpRequest(); 
+    					
+    					var params="secret=6LfXEBsTAAAAAM0OS011t7-EilQIjdg-SaUoEJGB&response="+document.getElementById("g-recaptcha-response").value+"\"";
+    					xhr.open("POST", "https://www.google.com/recaptcha/api/siteverify");  
+    					//xhr.setRequestHeader("Origin", "xyz");
+    					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    					xhr.send(params);
+    					xhr.onreadystatechange = function() 
+        				{ 
+            					// If the request completed, close the extension popup
+            					if (xhr.readyState == 4)
+  							if (xhr.status == 200)
+  							{
+  								alert("here");
+    								var json_data = xhr.responseText;
+    								alert(json_data);
+    							}
+        				};
+        				
+        				
+        				
+				}	
 				</script>
+				
+				
+				
+				
 			</div>
 		</div>
 	</div>
